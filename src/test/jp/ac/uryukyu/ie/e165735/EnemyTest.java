@@ -9,6 +9,7 @@ public class EnemyTest {
     @Test
     public void attack() throws Exception {
 
+        assertEquals(0, 1);
     }
 
 }

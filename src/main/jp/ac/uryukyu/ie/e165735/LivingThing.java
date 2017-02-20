@@ -1,6 +1,5 @@
 package jp.ac.uryukyu.ie.e165735;
 
-import java.security.PrivateKey;
 
 public class LivingThing {
     String name;
@@ -8,6 +7,11 @@ public class LivingThing {
     int attack;
     boolean dead;
 
+    /**
+     * @param name 生物名
+     * @param maximumHP 生物のHP
+     * @param attack 生物の攻撃力
+     */
     public LivingThing (String name, int maximumHP, int attack) {
         this.name = name;
         hitPoint = maximumHP;
@@ -16,6 +20,9 @@ public class LivingThing {
         System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
     }
 
+    /**
+     * @return boolean  生死状態、trueだと死んでいる
+     */
     public boolean isDead() {
         return dead;
     }
@@ -24,6 +31,10 @@ public class LivingThing {
         return name;
     }
 
+
+    /**
+     * @param opponent 攻撃対象
+     */
     public void attack(LivingThing opponent){
         if(dead == false) {
             int damage = (int) (Math.random() * attack);
@@ -32,6 +43,9 @@ public class LivingThing {
         }
     }
 
+    /**
+     * @param damage 受けたダメージ
+     */
     public void wounded(int damage){
         hitPoint -= damage;
         if( hitPoint <= 0 ) {
