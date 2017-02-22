@@ -1,10 +1,10 @@
 package jp.ac.uryukyu.ie.e165735;
 
 public class LivingThing {
-    String name;
-    int hitPoint;
-    int attack;
-    boolean dead;
+    private String name;
+    private int hitPoint;
+    private int attack;
+    private boolean dead;
 
     /**
      * @param name 生物名
@@ -25,18 +25,25 @@ public class LivingThing {
     public boolean isDead() {
         return dead;
     }
-
     public String getName() {
         return name;
     }
-
+    public int getHitPoint(){
+        return hitPoint;
+    }
+    public int getAttack(){
+        return attack;
+    }
+    public void setDead(boolean dead){
+        this.dead = dead;
+    }
 
     /**
      * @param opponent 攻撃対象
      */
     public void attack(LivingThing opponent){
         if(dead == false) {
-            int damage = (int) (Math.random() * attack);
+            int damage = (int) (Math.random() * getAttack());
             System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
             opponent.wounded(damage);
         }
@@ -48,7 +55,7 @@ public class LivingThing {
     public void wounded(int damage){
         hitPoint -= damage;
         if( hitPoint <= 0 ) {
-            dead = true;
+            setDead(true);
             if (name == "Hero") {
                 System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", name);
             } else {
